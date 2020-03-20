@@ -1,0 +1,19 @@
+server {
+    listen 8080 default_server;
+    listen 8181 ssl default_server;
+
+    ssl_certificate /etc/nginx/server.pem;
+    ssl_certificate_key /etc/nginx/server.key;
+
+    root /app;
+    index index.html
+    server_name _;
+
+    location /app {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location / {
+        proxy_pass http://payaradocker:8080;
+    }
+}
