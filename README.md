@@ -3,7 +3,7 @@ just blowing up stuff because I can
 
 ## Motivation
 
-I said it: blowing things up because I can (and it's fun!). Also, see https://serverfault.com/posts/1007746/edit
+I said it: blowing things up because I can (and it's fun!). Also, see https://serverfault.com/posts/1007746/
 
 ## About this project
 
