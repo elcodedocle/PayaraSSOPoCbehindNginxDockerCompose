@@ -1,0 +1,22 @@
+version: '2.1'
+services:
+    payarassodocker:
+        image: payara-full:latest
+        container_name: payarassodocker
+        env_file: local.env
+        ports: 
+        - "8081:8080"
+        - "4848:4848"
+        - "9009:9009"
+        volumes:
+        - ./target/app.war:/opt/payara/deployments/app.war
+    nginxdocker:
+        image: nginx:latest
+        container_name: nginxdocker
+        ports: 
+        - "8181:8181"
+        - "8080:8080"
+        volumes:
+        - ./app.site:/etc/nginx/sites-available/app.site
+        - ./server.pem:/etc/nginx/server.pem
+        - ./server.key:/etc/nginx/server.key
