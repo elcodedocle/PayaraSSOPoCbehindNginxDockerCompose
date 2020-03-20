@@ -17,6 +17,7 @@ services:
         - "8181:8181"
         - "8080:8080"
         volumes:
+        - ./appstatic:/appstatic
         - ./app.site:/etc/nginx/sites-available/app.site
         - ./server.pem:/etc/nginx/server.pem
         - ./server.key:/etc/nginx/server.key
