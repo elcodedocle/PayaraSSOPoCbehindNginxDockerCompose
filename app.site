@@ -5,11 +5,11 @@ server {
     ssl_certificate /etc/nginx/server.pem;
     ssl_certificate_key /etc/nginx/server.key;
 
-    root /app;
+    root /appstatic;
     index index.html
     server_name _;
 
-    location /app {
+    location /appstatic {
         try_files $uri $uri/ /index.html;
     }
 
