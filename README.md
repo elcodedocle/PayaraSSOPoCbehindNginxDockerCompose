@@ -1,6 +1,8 @@
 # PayaraSSObehindNginxNPEdockercomposePoC
 just blowing up stuff because I can
 
+![image](https://user-images.githubusercontent.com/3731026/77218635-af7b1180-6b2d-11ea-86cd-2442685a4387.png)
+
 ## Motivation
 
 I said it: blowing things up because I can (and it's fun!). Also, see https://serverfault.com/posts/1007746/
