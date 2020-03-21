@@ -1,24 +1,25 @@
 version: '2.1'
 services:
-    payarassodocker:
-        image: payara-full:latest
-        container_name: payarassodocker
-        env_file: local.env
-        ports: 
-        - "8081:8080"
-        - "4848:4848"
-        - "9009:9009"
-        volumes:
-        - ./target/app.war:/opt/payara/deployments/app.war
-        command: [/bin/sh, -c, "chmod +x entrypoint.sh && entrypoint.sh"]
-    nginxdocker:
-        image: nginx:latest
-        container_name: nginxdocker
-        ports: 
-        - "8181:8181"
-        - "8080:8080"
-        volumes:
-        - ./appstatic:/appstatic
-        - ./app.site:/etc/nginx/sites-available/app.site
-        - ./server.pem:/etc/nginx/server.pem
-        - ./server.key:/etc/nginx/server.key
+  payarassodocker:
+    image: payara/server-full:latest
+    container_name: payarassodocker
+    env_file: payara/local.env
+    ports:
+      - "8081:8080"
+      - "4848:4848"
+      - "9009:9009"
+    volumes:
+      - ./app/target/app-1.0.0-SNAPSHOT.war:/opt/payara/deployments/app.war
+      - ./authmodule/target/authmodule-1.0.0-SNAPSHOT.jar:/opt/payara/appserver/glassfish/domains/production/lib/authmodule.jar
+      - ./payara/pre-boot-commands.asadmin:/opt/payara/config/pre-boot-commands.asadmin
+  nginxdocker:
+    image: nginx:latest
+    container_name: nginxdocker
+    ports:
+      - "8181:8181"
+      - "8080:8080"
+    volumes:
+      - ./nginx/appstatic:/appstatic
+      - ./nginx/app.site:/etc/nginx/sites-available/app.site
+      - ./nginx/server.pem:/etc/nginx/server.pem
+      - ./nginx/server.key:/etc/nginx/server.key

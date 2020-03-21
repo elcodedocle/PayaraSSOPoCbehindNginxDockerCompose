@@ -1,0 +1,1 @@
+create-message-security-provider --layer HttpServlet --classname com.github.elcodedocle.authmodule.AuthModule --providertype server --requestauthsource sender --isdefaultprovider AuthSAM
