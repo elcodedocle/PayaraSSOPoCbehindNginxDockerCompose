@@ -28,7 +28,7 @@ server {
     }
 
     location / {
-        proxy_pass http://payaradocker:8080;
+        proxy_pass http://payarassodocker:8080;
     }
 }
 ```
