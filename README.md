@@ -33,7 +33,7 @@ server {
 }
 ```
 
-**It all works fine** but there is a significant performance degradation, about 20%, when working behind nginx. This may be due to the fact that Payara's single sign on is enabled and one of the things it does is [checking the request context realm][3] on every single [PwcCoyoteRequest][4] request. Somehow the context is lost when nginx is in front, so the following NPE is raised after which the server recovers nicely serving the request anyway but leaving a nasty stacktrace on the AS error log:
+**It all works fine** but there is a significant performance degradation, about 20%, when working behind nginx. This may be due to the fact that Payara's single sign on is enabled and one of the things it does is [checking the request context realm][3] on every single [PwcCoyoteRequest][4] request. Somehow the context is lost when nginx is in front, so the following NPE is raised, after which the server recovers nicely serving the request anyway but leaving a nasty stacktrace on the AS error log:
 
 ```
 [#|2020-03-16T11:24:02.237+0000|SEVERE|Payara 5.194|javax.enterprise.web.core|_ThreadID=48;_ThreadName=http-thread-pool::http-listener-1(5);_TimeMillis=1584357842237;_LevelValue=1000;_MessageID=AS-WEB-CORE-00037;|
