@@ -1,5 +1,5 @@
 # PayaraSSObehindNginxNPEdockercomposePoC
-having fun learning how to break payara SSO behind nginx proxy_pass
+Having fun learning how to break payara SSO behind nginx proxy_pass
 
 ![image](https://user-images.githubusercontent.com/3731026/77218635-af7b1180-6b2d-11ea-86cd-2442685a4387.png)
 
@@ -9,7 +9,7 @@ https://serverfault.com/posts/1007746/
 
 ## About this project
 
-This is a typical docker-compose setup where a Java AS ([Payara][1]) is behind a web server ([nginx][2]) using a reverse proxy via [proxy_pass](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass) directive to forward all server requests (anything but the static content served on `/appstatic`) to Payara's internal ip:port server socket. [docker-compose.yml](docker-compose.yml) exposes the nginx container with the following [nginx docker][2] site config:
+This is a typical docker-compose setup where a Java AS ([Payara][1]) is behind a web server ([nginx][2]) using a reverse proxy via [proxy_pass](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass) directive to forward all server requests (anything but the static content served on `/appstatic`) to the AS's internal `ip:port` server socket. [docker-compose.yml](docker-compose.yml) exposes the nginx container with the following [nginx docker][2] site config:
 
 ```
 server {
@@ -33,7 +33,7 @@ server {
 }
 ```
 
-**It all works fine** but there is a significant performance degradation, about 20%, when working behind nginx. This may be due to the fact that Payara single sign on is enabled and one of the things it does is [checking the request context realm][3] on every single [PwcCoyoteRequest][4] request. Somehow the context is lost when nginx is in front, so the following NPE is raised after which the server recovers nicely serving the request anyway but leaving a nasty stacktrace on the AS error log:
+**It all works fine** but there is a significant performance degradation, about 20%, when working behind nginx. This may be due to the fact that Payara's single sign on is enabled and one of the things it does is [checking the request context realm][3] on every single [PwcCoyoteRequest][4] request. Somehow the context is lost when nginx is in front, so the following NPE is raised after which the server recovers nicely serving the request anyway but leaving a nasty stacktrace on the AS error log:
 
 ```
 [#|2020-03-16T11:24:02.237+0000|SEVERE|Payara 5.194|javax.enterprise.web.core|_ThreadID=48;_ThreadName=http-thread-pool::http-listener-1(5);_TimeMillis=1584357842237;_LevelValue=1000;_MessageID=AS-WEB-CORE-00037;|
