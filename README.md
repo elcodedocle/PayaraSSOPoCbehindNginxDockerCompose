@@ -1,5 +1,5 @@
 # PayaraSSObehindNginxNPEdockercomposePoC
-Having fun learning how to break payara SSO behind nginx proxy_pass
+Having fun learning how to break payara SSO behind nginx's proxy_pass
 
 ![image](https://user-images.githubusercontent.com/3731026/77218635-af7b1180-6b2d-11ea-86cd-2442685a4387.png)
 
