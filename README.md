@@ -9,7 +9,7 @@ https://serverfault.com/posts/1007746/
 
 ## About this project
 
-This is a typical docker-compose setup where ([Payara][1]) Java AS is behind a web server ([nginx][2]) using a reverse proxy via [proxy_pass](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass) directive to forward all server requests (anything but the static content served on `/appstatic`) to Payara's internal ip:port server socket. [docker-compose.yml](docker-compose.yml) exposes the nginx container with the following [nginx docker][2] site config:
+This is a typical docker-compose setup where a Java AS ([Payara][1]) is behind a web server ([nginx][2]) using a reverse proxy via [proxy_pass](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass) directive to forward all server requests (anything but the static content served on `/appstatic`) to Payara's internal ip:port server socket. [docker-compose.yml](docker-compose.yml) exposes the nginx container with the following [nginx docker][2] site config:
 
 ```
 server {
