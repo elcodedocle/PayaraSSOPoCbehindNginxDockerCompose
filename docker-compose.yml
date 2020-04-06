@@ -20,7 +20,7 @@ services:
       - "8080:8080"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/appstatic:/appstatic:ro
+      - ./nginx/appstatic:/usr/share/nginx/html:ro
       - ./nginx/app.site:/etc/nginx/sites-enabled/app.site:ro
       - ./nginx/server.pem:/etc/nginx/server.pem:ro
       - ./nginx/server.key:/etc/nginx/server.key:ro
