@@ -7,6 +7,7 @@ server {
 
     server_name _;
     root /usr/share/nginx/html;
+    index index.html
 
     location /appstatic {
         try_files $uri $uri/ /appstatic/index.html;
